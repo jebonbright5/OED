@@ -79,7 +79,6 @@ app.use('/api/timezones', timezones);
 app.use('/api/obvius', obvius);
 app.use('/api/csv', csv);
 app.use('/api/conversion-array', conversionArray);
-app.use('/api/update-cik', conversionArray);
 app.use('/api/units', units);
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 

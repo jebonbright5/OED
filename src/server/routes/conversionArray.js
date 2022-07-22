@@ -5,7 +5,7 @@
 const express = require('express');
 const { log } = require('../log');
 const { getConnection } = require('../db');
-const { createPik } = require('../services/graph/redoCik');
+const { createPik, redoCik } = require('../services/graph/redoCik');
 
 const router = express.Router();
 
@@ -26,12 +26,10 @@ router.get('/', async (req, res) => {
 /*
  *	Route for updating the conversion array
  */
- router.get('/update-cik', async (req, res) => {
-	console.log('test');	
+ router.put('/update-cik', async (req, res) => {
 	const conn = getConnection();
 	try {
-		await redoCik.redoCik(conn);
-		console.log('after await redoCik');
+		await redoCik(conn);
 	} catch(err) {
 		log.error('Failed to update cik.', err);
 		res.status(500).json({ message: 'Unable to update cik', err});

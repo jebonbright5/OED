@@ -7,7 +7,7 @@ const { log } = require('../log');
 const { getConnection } = require('../db');
 const Unit = require('../models/Unit');
 const Conversion = require('../models/Conversion');
-const { redoCik } = require('../services/graph/redoCik');
+const { redoCik } = require('./graph/redoCik');
 
 (async function createSchemaWrapper() {
 	const conn = getConnection();

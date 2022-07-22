@@ -85,11 +85,9 @@ export function submitEditedUnit(editedUnit: t.UnitData): Thunk {
 				// posts the edited unitData to the units API
 				await unitsApi.edit(editedUnit);
 				//Update Cik
-				console.log('Before pik', ConversionArray.pik)
 				await conversionArrayApi.updateCik()
-				// //Update Pik
+				// Update Pik
 				await ConversionArray.fetchPik();
-				console.log('After pik', ConversionArray.pik)
 				// Clear unit Id from submitting state array
 				dispatch(deleteSubmittedUnit(editedUnit.id));
 				// Update the store with our new edits

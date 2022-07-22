@@ -18,7 +18,8 @@ export default class ConversionArrayApi {
 	}
 
 	public async updateCik(): Promise<void>{
-		console.log('update called -------------')
-		return await this.backend.doGetRequest('/api/update-cik')
+		// OED does not have a perfect request since this neither sends nor received infomation.
+		// This uses the put that does not expect any response (<void>) and then sends undefined as the data.
+		return await this.backend.doPutRequest<void>('/api/conversion-array/update-cik', undefined)
 	}
 }
