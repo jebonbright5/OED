@@ -7,6 +7,8 @@ import { showSuccessNotification, showErrorNotification } from '../utils/notific
 import translate from '../utils/translate';
 import * as t from '../types/redux/units';
 import { unitsApi } from '../utils/api';
+import { conversionArrayApi } from '../utils/api';
+import { ConversionArray } from '../types/conversionArray';
 
 export function requestUnitsDetails(): t.RequestUnitsDetailsAction {
 	return { type: ActionType.RequestUnitsDetails };
@@ -82,6 +84,12 @@ export function submitEditedUnit(editedUnit: t.UnitData): Thunk {
 			try {
 				// posts the edited unitData to the units API
 				await unitsApi.edit(editedUnit);
+				//Update Cik
+				console.log('Before pik', ConversionArray.pik)
+				await conversionArrayApi.updateCik()
+				// //Update Pik
+				await ConversionArray.fetchPik();
+				console.log('After pik', ConversionArray.pik)
 				// Clear unit Id from submitting state array
 				dispatch(deleteSubmittedUnit(editedUnit.id));
 				// Update the store with our new edits

@@ -23,4 +23,20 @@ router.get('/', async (req, res) => {
 	}
 });
 
+/*
+ *	Route for updating the conversion array
+ */
+ router.get('/update-cik', async (req, res) => {
+	console.log('test');	
+	const conn = getConnection();
+	try {
+		await redoCik.redoCik(conn);
+		console.log('after await redoCik');
+	} catch(err) {
+		log.error('Failed to update cik.', err);
+		res.status(500).json({ message: 'Unable to update cik', err});
+	}
+	res.status(200).json({ message: `Successfully updated cik`});
+})
+
 module.exports = router;

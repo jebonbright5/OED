@@ -16,4 +16,9 @@ export default class ConversionArrayApi {
 	public async getConversionArray(): Promise<boolean[][]> {
 		return await this.backend.doGetRequest<boolean[][]>('/api/conversion-array');
 	}
+
+	public async updateCik(): Promise<void>{
+		console.log('update called -------------')
+		return await this.backend.doGetRequest('/api/update-cik')
+	}
 }

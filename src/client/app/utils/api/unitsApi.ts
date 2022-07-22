@@ -19,6 +19,7 @@ export default class UnitsApi {
 	}
 
 	public async edit(unit: UnitData): Promise<UnitEditData> {
+		console.log('in edit');
 		return await this.backend.doPostRequest<UnitEditData>(
 			'/api/units/edit',
 			{
